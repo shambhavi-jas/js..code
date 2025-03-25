@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<<body style="background-color: #212121; color: #fff;">
+</body>
+
+<!-- <script>
+  function calling(arr){
+    for(let i=0;i<arr.length;i++){
+    const div =document.createElement('div')
+     //console.log(div);
+     //2 ways....
+     div.className="temp"
+     //div.id=Math.round(Math.random*10+1)
+     div.id=`div-${i+1}`
+     div.setAttribute('title','hell')
+     div.style.padding="12px"
+     div.style.backgroundColor=arr[i].color
+
+     //2 ways.......
+       //1....
+     //div.innerHTML="chai and code"
+       //2....
+     const tem=document.createTextNode(arr[i].text)
+     div.appendChild(tem)
+    
+
+     document.body.appendChild(div)
+    }
+  }
+    
+  const arr=[
+    {color:"red",text:"Here, me 1"},
+    {color:"blue",text:"Here, me 2"},
+    {color:"yellow",text:"Here, me 3"}
+  ];
+  
+  calling(arr);
+</script>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Buttons</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .firstbutton {
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: none;
+            margin: 5px;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="generateButtons()">Generate Buttons</button>
+
+<script>
+    function generateButtons() {
+        for (let i = 0; i < 5; i++) {
+            let text = prompt(`Enter text for button ${i + 1}:`);
+            let color = prompt(`Enter color for button ${i + 1}:`);
+
+            if (text && color) {
+                createButton(text, color);
+            } else {
+                alert("Both text and color are required!");
+            }
+        }
+    }
+
+    function createButton(text, bgColor) {
+        const button = document.createElement('button');
+        button.className = "firstbutton";
+        button.setAttribute('type', 'button');
+        button.style.backgroundColor = bgColor;
+        button.textContent = text;
+
+        document.body.appendChild(button);
+    }
+</script>
+
+</body>
+</html>
