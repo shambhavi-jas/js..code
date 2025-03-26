@@ -28,16 +28,26 @@
    add("CPP")
 
    const sec=document.querySelector("li:nth-child(2)")
-   console.log(sec);            //li...li(mozo)
+   console.log(sec);            //li :: markers mozo li
 //    console.log(sec.innerHTML);  //python
 //    sec.innerText="MOZO";        
-//    console.log(sec.innerHTML);  //li...li(mozo)
-//    console.log(sec);            //mozo
+//    console.log(sec.innerHTML);  //mozo
+//    console.log(sec);            //li...li(mozo)
   
-//    const newt=document.createElement("li")
-//    newt.textContent="Mozo"
-//    sec.replaceWith(newt);
-   
+    const newt=document.createElement("li")
+    newt.textContent="Mozo"
+    sec.replaceWith(newt);       
+    console.log(sec); 
+
+
+    //edit...
+    const firlang=document.querySelector("li:first-child")
+    firlang.outerHTML="<li>css</li>";
+
+    //remove...
+    const lastlang=document.querySelector("li:last-child")
+    lastlang.remove();
+
 
 </script>
 </html>
