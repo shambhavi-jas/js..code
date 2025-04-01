@@ -73,3 +73,102 @@ setInterval(function(){
     clock.innerHTML=date.toLocaleTimeString();
 },1000);
 ```
+
+
+
+
+
+## solution 4 (guess no....)
+
+``` javascript
+let randomno=parseInt(Math.random()*100+1);
+
+const submit=document.getElementById("subt")
+const userinput=document.getElementById("guessField")
+
+const prev=document.querySelector(".guesses")
+const rem=document.querySelector(".lastResult")
+const res_msg=document.querySelector(".lowOrHi")
+const start_over=document.querySelector(".resultParas")
+
+let arr=[];
+let gamestart=true;
+let c=1;
+const p=document.createElement('p');
+
+
+if(gamestart){
+  submit.addEventListener('click',function(e){
+    e.preventDefault();
+    const val=parseInt(userinput.value)
+    //console.log(val)
+    validate_no(val)
+  });
+}
+
+function validate_no(no){
+  if(isNaN(no)){
+    alert("Plz enter valid no...")
+  }else if(no<1){
+    alert("Plz enter valid no more than 0...")
+  }else if(no>100){
+    alert("Plz enter valid no less than 100...")
+  }else{
+    arr.push(no)
+    if(c===11){
+       update(no)
+       display_msg(`GAME OVER ,RANDOM.NO =${randomno}`);
+       thend();
+    }else{
+       update(no)
+       check_result(no)
+    }
+  }
+}
+
+function check_result(no){
+  if(no===randomno){
+    display_msg("You guessed right!")
+    thend();
+  }else if(no<randomno){
+    display_msg("no is too low...")
+  }else if(no>randomno){
+    display_msg("no is too high...")
+  }
+}
+
+function update(no){
+   userinput.value=""
+   prev.innerHTML+=`${no}  ,`
+   c++;
+   rem.innerHTML=`${11-c}`
+}
+
+function display_msg(msg){
+  res_msg.innerHTML=`<h2>${msg}</h2>`;
+}
+
+function thend(){
+  gamestart=false;
+  userinput.value='';
+  userinput.setAttribute('disabled','');
+  p.classList.add('btntostart');
+  p.innerHTML=`<h2 id="newstart">START THE NEW GAME</h2>`;
+  start_over.append(p);
+}
+
+function newstart(){
+  const btnstart=document.querySelector('#newstart');
+  btnstart.addEventListener('click',function(e){
+  randomno=parseInt(Math.random()*100+1);
+  art=[];
+  prev.innerHTML=''
+  c=1;
+  rem.innerHTML=`${11-c}`;
+  userinput.removeAttribute('disabled');
+  start_over.removeChild(p);
+  gamestart=true;
+  });
+  
+}
+```
