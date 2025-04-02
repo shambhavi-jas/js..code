@@ -1,0 +1,49 @@
+<!-- this is project no 5 and other two are simple one but all other projects are in project folder including event projects-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+   
+</body>
+
+
+<script>
+    function random_colors(){
+  const hex='0123456789ABCDEF';
+  let str='#'
+  for(let i=0;i<6;i++){
+    str+=hex[Math.floor(Math.random()*16)];
+  }
+  return str;
+}
+function bgchange(){
+  document.body.style.backgroundColor=random_colors();
+}
+
+
+let store;
+const startfunc=function(){
+  if(!store){
+    store=setInterval(bgchange,1000);
+  }
+}
+
+
+const theend=function(){
+  clearInterval(store);
+  store=null;
+}
+
+document.querySelector("#start").addEventListener('click',
+startfunc);
+document.querySelector("#stop").addEventListener('click',theend);
+        
+</script>
+</html>

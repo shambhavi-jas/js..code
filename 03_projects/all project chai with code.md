@@ -172,3 +172,62 @@ function newstart(){
   
 }
 ```
+
+
+# events project 
+# solution 5 (unlimited background...)
+```javascript
+function random_colors(){
+  const hex='0123456789ABCDEF';
+  let str='#'
+  for(let i=0;i<6;i++){
+    str+=hex[Math.floor(Math.random()*16)];
+  }
+  return str;
+}
+function bgchange(){
+  document.body.style.backgroundColor=random_colors();
+}
+
+
+let store;
+const startfunc=function(){
+  if(!store){
+    store=setInterval(bgchange,1000);
+  }
+}
+
+
+const theend=function(){
+  clearInterval(store);
+  store=null;
+}
+
+document.querySelector("#start").addEventListener('click',
+startfunc);
+document.querySelector("#stop").addEventListener('click',theend);
+```
+
+# solution 6 (keyboard)
+```javascript
+const insert=document.querySelector("#insert");
+
+window.addEventListener('keydown',(e)=>{
+  insert.innerHTML=`
+  <div class='color'>
+    <table>
+    <tr> 
+       <th>key</th>
+       <th>keycode</th>
+       <th>code</th>
+    </tr>
+    <tr> 
+       <th>${e.key==""?space:e.key}</th>
+       <th>${e.keyCode}</th>
+       <th>${e.code}</th>
+    </tr>
+    </table>
+    </div>
+  `
+});
+```
